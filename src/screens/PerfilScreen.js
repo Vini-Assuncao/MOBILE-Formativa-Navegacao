@@ -1,4 +1,4 @@
-// TODO: escolher um tema e personalizar os dados e estilizacao desta tela
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -15,23 +15,20 @@ export default function PerfilScreen() {
       </View>
 
       <View style={styles.cartao}>
-        {/* TODO: personalizar o avatar com a inicial do nome do usuario */}
         <View style={styles.avatar}>
-          <Text style={styles.avatarTexto}>U</Text>
+          <Text style={styles.avatarTexto}>V</Text>
         </View>
-        {/* TODO: personalizar nome e e-mail */}
-        <Text style={styles.nome}>Nome do Usuario</Text>
-        <Text style={styles.email}>usuario@email.com</Text>
+        <Text style={styles.nome}>Vinícius Assunção</Text>
+        <Text style={styles.email}>vinicius.santos24@aluno.senai.br</Text>
 
         <View style={styles.separador} />
 
-        {/* TODO: substituir pelas estatisticas que fazem sentido no seu tema */}
         <View style={styles.infoLinha}>
-          <Text style={styles.infoLabel}>Itens salvos</Text>
+          <Text style={styles.infoLabel}>Jogos salvos</Text>
           <Text style={styles.infoValor}>0</Text>
         </View>
         <View style={styles.infoLinha}>
-          <Text style={styles.infoLabel}>Itens favoritos</Text>
+          <Text style={styles.infoLabel}>Jogos favoritos</Text>
           <Text style={styles.infoValor}>0</Text>
         </View>
         <View style={styles.infoLinha}>
@@ -40,7 +37,6 @@ export default function PerfilScreen() {
         </View>
       </View>
 
-      {/* TODO: mudar o texto do botao para o contexto do seu tema */}
       <TouchableOpacity style={styles.botao}>
         <Text style={styles.botaoTexto}>Editar perfil</Text>
       </TouchableOpacity>
@@ -48,93 +44,115 @@ export default function PerfilScreen() {
   );
 }
 
-// TODO: estilizar com as cores e identidade visual do seu tema
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#080808",
   },
+
   header: {
-    backgroundColor: "#333333",
+    backgroundColor: "#111111",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
+    borderBottomWidth: 4,
+    borderBottomColor: "#00FFFF",
   },
+
   headerTitulo: {
-    fontSize: 26,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "900",
+    color: "#00FFFF",
+    textTransform: "uppercase",
+    letterSpacing: 2,
   },
+
   cartao: {
     margin: 16,
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#111111",
     borderRadius: 16,
     padding: 24,
     alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 4,
+    borderWidth: 3,
+    borderColor: "#00FFFF",
   },
+
   avatar: {
-    width: 88,
-    height: 88,
-    borderRadius: 44,
-    backgroundColor: "#E0E0E0",
+    width: 96,
+    height: 96,
+    borderRadius: 16,
+    backgroundColor: "#FF00FF",
+    borderWidth: 4,
+    borderColor: "#FFFF00",
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 3,
-    borderColor: "#AAAAAA",
-    marginBottom: 16,
+    marginBottom: 18,
   },
+
   avatarTexto: {
-    fontSize: 36,
-    fontWeight: "bold",
-    color: "#555555",
+    fontSize: 42,
+    fontWeight: "900",
+    color: "#FFFFFF",
   },
+
   nome: {
-    fontSize: 22,
-    fontWeight: "bold",
-    color: "#1A1A1A",
-    marginBottom: 4,
+    fontSize: 24,
+    fontWeight: "900",
+    color: "#00FFFF",
+    textAlign: "center",
+    marginBottom: 6,
+    textTransform: "uppercase",
   },
+
   email: {
     fontSize: 14,
-    color: "#888888",
-    marginBottom: 20,
+    color: "#FFFFFF",
+    marginBottom: 22,
+    textAlign: "center",
   },
+
   separador: {
     width: "100%",
-    height: 1,
-    backgroundColor: "#F0F0F0",
+    height: 3,
+    backgroundColor: "#FF00FF",
     marginBottom: 16,
   },
+
   infoLinha: {
     flexDirection: "row",
     justifyContent: "space-between",
     width: "100%",
-    paddingVertical: 8,
+    paddingVertical: 10,
   },
+
   infoLabel: {
     fontSize: 14,
-    color: "#555555",
+    color: "#FFFF00",
+    fontWeight: "bold",
+    textTransform: "uppercase",
   },
+
   infoValor: {
     fontSize: 14,
-    fontWeight: "600",
-    color: "#333333",
+    color: "#FFFFFF",
+    fontWeight: "900",
   },
+
   botao: {
     marginHorizontal: 16,
-    backgroundColor: "#333333",
+    backgroundColor: "#FF00FF",
+    borderWidth: 3,
+    borderColor: "#00FFFF",
     borderRadius: 12,
-    paddingVertical: 14,
+    paddingVertical: 16,
     alignItems: "center",
   },
+
   botaoTexto: {
-    fontSize: 15,
-    fontWeight: "bold",
+    fontSize: 16,
+    fontWeight: "900",
     color: "#FFFFFF",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
 });

@@ -1,9 +1,6 @@
-// TODO: estilizar esta tela com as cores e identidade visual do seu tema
-
 import { useState } from "react";
 import { FlatList, SafeAreaView, StyleSheet, Text, View } from "react-native";
-// TODO: apos criar o componente CardJogo, importe-o aqui:
-// import { CardJogo } from '../components';
+import { CardJogo } from '../components';
 
 // Dados de exemplo para voce visualizar o renderItem funcionando
 // Em um app real, esses itens chegariam via route.params enviados pela DetalheScreen
@@ -28,14 +25,13 @@ export default function ListaScreen({ route }) {
   const [itensSalvos, setItensSalvos] = useState(jogosMock);
 
   // Para receber um jogo salvo da DetalheScreen via route.params:
-  // if (route.params?.novoJogo) {
-  //   setItensSalvos(prev => [...prev, route.params.novoJogo]);
-  // }
+  if (route.params?.novoJogo) {
+    setItensSalvos(prev => [...prev, route.params.novoJogo]);
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        {/* TODO: renomeie o titulo para o seu tema */}
         <Text style={styles.headerTitulo}>Minha Lista</Text>
       </View>
 
@@ -43,16 +39,13 @@ export default function ListaScreen({ route }) {
         data={itensSalvos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          // TODO: crie o arquivo src/components/CardJogo.js
-          // O componente CardJogo deve receber as props: titulo, genero, plataforma e nota
-          // Depois substitua este bloco por:
-          // <CardJogo titulo={item.titulo} genero={item.genero} plataforma={item.plataforma} nota={item.nota} />
-          <View style={styles.card} />
+          <View style={styles.card}>
+            <CardJogo titulo={item.titulo} genero={item.genero} plataforma={item.plataforma} nota={item.nota} />
+          </View>
         )}
         ListEmptyComponent={
           <View style={styles.conteudo}>
             <View style={styles.iconeContainer}>
-              {/* TODO: troque pela inicial do seu tema */}
               <Text style={styles.icone}>G</Text>
             </View>
             <Text style={styles.titulo}>Nenhum jogo salvo</Text>
@@ -68,71 +61,89 @@ export default function ListaScreen({ route }) {
   );
 }
 
-// TODO: ajuste as cores para o tema do seu app
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F5F5F5",
+    backgroundColor: "#080808",
   },
+
   header: {
-    backgroundColor: "#333333",
+    backgroundColor: "#111111",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
+    borderBottomWidth: 4,
+    borderBottomColor: "#00FFFF",
   },
+
   headerTitulo: {
-    fontSize: 26,
-    fontWeight: "bold",
-    color: "#FFFFFF",
+    fontSize: 28,
+    fontWeight: "900",
+    color: "#00FFFF",
+    textTransform: "uppercase",
+    letterSpacing: 2,
   },
+
   listaVazia: {
     flex: 1,
   },
+
   conteudo: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
     paddingHorizontal: 32,
   },
+
   iconeContainer: {
-    width: 96,
-    height: 96,
-    borderRadius: 48,
-    backgroundColor: "#E0E0E0",
+    width: 100,
+    height: 100,
+    borderRadius: 16,
+    backgroundColor: "#FF00FF",
+    borderWidth: 4,
+    borderColor: "#FFFF00",
     alignItems: "center",
     justifyContent: "center",
-    marginBottom: 20,
+    marginBottom: 24,
   },
+
   icone: {
-    fontSize: 40,
-    fontWeight: "bold",
-    color: "#555555",
+    fontSize: 42,
+    fontWeight: "900",
+    color: "#FFFFFF",
   },
+
   titulo: {
-    fontSize: 20,
-    fontWeight: "bold",
-    color: "#1A1A1A",
-    marginBottom: 8,
+    fontSize: 22,
+    fontWeight: "900",
+    color: "#00FFFF",
     textAlign: "center",
+    textTransform: "uppercase",
+    marginBottom: 10,
   },
+
   descricao: {
     fontSize: 16,
-    color: "#555555",
-    fontWeight: "600",
+    color: "#FFFFFF",
+    fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 12,
+    marginBottom: 14,
   },
+
   dica: {
     fontSize: 13,
-    color: "#888888",
+    color: "#BBBBBB",
     textAlign: "center",
-    lineHeight: 20,
+    lineHeight: 22,
   },
+
   card: {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#111111",
     marginHorizontal: 16,
     marginTop: 12,
-    borderRadius: 8,
+    borderRadius: 12,
+    borderWidth: 3,
+    borderColor: "#00FFFF",
     padding: 16,
   },
 });

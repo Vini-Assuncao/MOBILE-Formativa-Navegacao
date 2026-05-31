@@ -1,6 +1,5 @@
 // Componente reutilizavel: BotaoAcao
 // Exemplo de componente extraido para a pasta components/
-// TODO: estilizar com as cores do seu tema
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
 export default function BotaoAcao({ texto, onPress, ativo }) {
@@ -14,22 +13,28 @@ export default function BotaoAcao({ texto, onPress, ativo }) {
   );
 }
 
-// TODO: ajustar as cores para o tema do seu app
 const styles = StyleSheet.create({
   botao: {
-    backgroundColor: '#333333',
+    backgroundColor: "#FF00FF",
+    borderWidth: 3,
+    borderColor: "#00FFFF",
     borderRadius: 12,
-    paddingVertical: 14,
-    alignItems: 'center',
+    paddingVertical: 16,
+    alignItems: "center",
     marginHorizontal: 16,
     marginBottom: 16,
   },
+
   botaoAtivo: {
-    backgroundColor: '#555555',
+    backgroundColor: "#00CC66",
+    borderColor: "#FFFF00",
   },
+
   texto: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: "900",
+    color: "#FFFFFF",
+    textTransform: "uppercase",
+    letterSpacing: 1,
   },
 });

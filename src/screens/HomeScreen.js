@@ -1,6 +1,4 @@
-// TODO: estilizar esta tela com as cores e identidade visual do seu tema
-// TODO: importar useState e useEffect — adicione a linha abaixo no topo:
-// import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -11,7 +9,6 @@ import {
   View,
 } from 'react-native';
 
-// TODO: substituir pelos jogos que voce escolheu
 const jogos = [
   {
     id: '1',
@@ -69,35 +66,29 @@ const jogos = [
   },
 ];
 
-// TODO: adicionar { navigation } como parametro quando a navegacao estiver configurada
-export default function HomeScreen() {
-  // TODO: estado para o texto digitado na busca
-  // const [busca, setBusca] = useState('');
 
-  // TODO: estado com os jogos exibidos na lista — inicia com todos
-  // const [jogosFiltrados, setJogosFiltrados] = useState(jogos);
+export default function HomeScreen({ navigation }) {
+  const [busca, setBusca] = useState('');
 
-  // TODO: filtrar os jogos sempre que o valor de 'busca' mudar
-  // useEffect(() => {
-  //   const resultado = jogos.filter((jogo) =>
-  //     jogo.titulo.toLowerCase().includes(busca.toLowerCase())
-  //   );
-  //   setJogosFiltrados(resultado);
-  // }, [busca]);
+  const [jogosFiltrados, setJogosFiltrados] = useState(jogos);
+
+  useEffect(() => {
+    const resultado = jogos.filter((jogo) =>
+      jogo.titulo.toLowerCase().includes(busca.toLowerCase())
+    );
+    setJogosFiltrados(resultado);
+  }, [busca]);
 
   function renderItem({ item }) {
     return (
       <TouchableOpacity
         style={styles.card}
-        // TODO: implementar onPress com navigation.navigate passando os dados do jogo
-        // onPress={() => navigation.navigate('Detalhe', { ...item })}
+        onPress={() => navigation.navigate('Detalhe', { ...item })}
       >
         <View style={styles.cardIcone}>
-          {/* TODO: substituir pela inicial do titulo ou outro elemento do seu tema */}
           <Text style={styles.cardIconeTexto}>{item.titulo[0]}</Text>
         </View>
         <View style={styles.cardInfo}>
-          {/* TODO: substituir pelos campos do seu tema */}
           <Text style={styles.cardTitulo}>{item.titulo}</Text>
           <Text style={styles.cardSubtitulo}>{item.genero}</Text>
         </View>
@@ -108,27 +99,24 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        {/* TODO: colocar o nome do seu app e subtitulo */}
         <Text style={styles.headerTitulo}>Catalogo de Games</Text>
         <Text style={styles.headerSubtitulo}>
           Escolha um jogo para ver os detalhes
         </Text>
       </View>
 
-      {/* Campo de busca — TODO: adicionar value={busca} e onChangeText={setBusca} */}
       <View style={styles.buscaContainer}>
         <TextInput
           style={styles.buscaInput}
           placeholder="Buscar jogo..."
           placeholderTextColor="#999"
-          // value={busca}
-          // onChangeText={setBusca}
+          value={busca}
+          onChangeText={setBusca}
         />
       </View>
 
-      {/* TODO: trocar data={jogos} por data={jogosFiltrados} apos implementar o estado */}
       <FlatList
-        data={jogos}
+        data={jogosFiltrados}
         keyExtractor={(item) => item.id}
         renderItem={renderItem}
         contentContainerStyle={styles.lista}
@@ -138,84 +126,101 @@ export default function HomeScreen() {
   );
 }
 
-// TODO: estilizar com as cores e identidade visual do seu tema
 const styles = StyleSheet.create({
-  buscaContainer: {
-    backgroundColor: '#FFFFFF',
-    paddingHorizontal: 16,
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#E0E0E0',
-  },
-  buscaInput: {
-    backgroundColor: '#F0F0F0',
-    borderRadius: 8,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
-    fontSize: 14,
-    color: '#1A1A1A',
-  },
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: "#080808",
   },
+
   header: {
-    backgroundColor: '#333333',
+    backgroundColor: "#111111",
     paddingHorizontal: 20,
     paddingTop: 20,
     paddingBottom: 24,
+    borderBottomWidth: 4,
+    borderBottomColor: "#00FFFF",
   },
+
   headerTitulo: {
-    fontSize: 26,
-    fontWeight: 'bold',
-    color: '#FFFFFF',
+    fontSize: 28,
+    fontWeight: "900",
+    color: "#00FFFF",
+    textTransform: "uppercase",
+    letterSpacing: 2,
   },
+
   headerSubtitulo: {
     fontSize: 13,
-    color: '#CCCCCC',
-    marginTop: 4,
+    color: "#FF00FF",
+    marginTop: 6,
+    fontWeight: "bold",
   },
+
+  buscaContainer: {
+    backgroundColor: "#111111",
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+  },
+
+  buscaInput: {
+    backgroundColor: "#1A1A1A",
+    borderWidth: 3,
+    borderColor: "#FFFF00",
+    borderRadius: 10,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    fontSize: 14,
+    color: "#FFFFFF",
+  },
+
   lista: {
     padding: 16,
-    gap: 12,
+    gap: 14,
   },
+
   card: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FFFFFF',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#111111",
+    borderWidth: 3,
+    borderColor: "#00FFFF",
     borderRadius: 12,
     padding: 14,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.08,
-    shadowRadius: 6,
-    elevation: 3,
   },
+
   cardIcone: {
-    width: 48,
-    height: 48,
-    borderRadius: 24,
-    backgroundColor: '#E0E0E0',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: 56,
+    height: 56,
+    borderRadius: 10,
+    backgroundColor: "#FF00FF",
+    borderWidth: 3,
+    borderColor: "#FFFF00",
+    alignItems: "center",
+    justifyContent: "center",
     marginRight: 14,
   },
+
   cardIconeTexto: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#555555',
+    fontSize: 22,
+    fontWeight: "900",
+    color: "#FFFFFF",
   },
+
   cardInfo: {
     flex: 1,
   },
+
   cardTitulo: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: '#1A1A1A',
+    fontSize: 16,
+    fontWeight: "900",
+    color: "#00FFFF",
     marginBottom: 4,
+    textTransform: "uppercase",
   },
+
   cardSubtitulo: {
     fontSize: 13,
-    color: '#888888',
+    color: "#FFFFFF",
+    fontWeight: "600",
   },
 });
